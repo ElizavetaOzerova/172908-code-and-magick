@@ -9,6 +9,8 @@ var BAR_GAP = 50;
 var TEXT_HEIGHT = 20;
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = CLOUD_HEIGHT - GAP - TEXT_HEIGHT - TEXT_HEIGHT - GAP - TEXT_HEIGHT - TEXT_HEIGHT - TEXT_HEIGHT - GAP;
+var COLOR_SHADOW = 'rgba(0, 0, 0, 0.7)';
+var COLOR_WHITE = 'rgba(255, 255, 255, 1)';
 var COLOR_BLACK = 'rgba(0, 0, 0, 1)';
 var COLOR_RED = 'rgba(255, 0, 0, 1)';
 
@@ -18,25 +20,20 @@ var renderCloud = function (ctx, x, y, color) {
 };
 
 var getMaxElement = function (arr) {
-  if (arr.length !== 0) {
-    var maxElement = arr[0];
+  var maxElement = arr[0];
 
-    for (var i = 1; i < arr.length; i++) {
-      if (arr[i] > maxElement) {
-        maxElement = arr[i];
-      }
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] > maxElement) {
+      maxElement = arr[i];
     }
-
-    return maxElement;
   }
 
-  return undefined;
-
+  return maxElement;
 };
 
 window.renderStatistics = function (ctx, players, times) {
-  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
-  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
+  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, COLOR_SHADOW);
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, COLOR_WHITE);
 
   ctx.fillStyle = COLOR_BLACK;
   ctx.font = '16px PT Mono';
